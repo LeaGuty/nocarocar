@@ -1,16 +1,130 @@
-# React + Vite
+# NoCaro Car - Tienda de Vehículos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React y Vite para la gestión de un inventario de vehículos.
 
-Currently, two official plugins are available:
+## 👨‍💻 Autor
+**Luis Gutiérrez**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características
 
-## React Compiler
+- ✅ Catálogo completo de vehículos con información detallada
+- ✅ Sistema de filtros múltiples (búsqueda, marca, tipo, precio, año)
+- ✅ Agregar nuevos vehículos mediante formulario
+- ✅ Marcar vehículos como "posible compra"
+- ✅ Los vehículos marcados salen del inventario general
+- ✅ Página de detalle de cada vehículo
+- ✅ Página dedicada para vehículos marcados
+- ✅ Diseño responsive con Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- **React 18** - Librería de JavaScript para interfaces de usuario
+- **Vite** - Build tool y dev server ultrarrápido
+- **React Router DOM** - Navegación entre páginas
+- **Tailwind CSS 3** - Framework de CSS utility-first
+- **JSON** - Almacenamiento de datos inicial
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Instalación
+
+### Requisitos previos
+- Node.js (v14 o superior)
+- npm o yarn
+
+### Pasos de instalación
+
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/LeaGuty/nocarocar.git
+cd nocarocar
+```
+
+2. Instalar dependencias:
+```bash
+npm install
+```
+
+3. Iniciar el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+4. Abrir en el navegador:
+```
+http://localhost:5173/
+```
+
+## 📁 Estructura del Proyecto
+```
+nocarocar/
+├── src/
+│   ├── components/          # Componentes reutilizables
+│   │   ├── NavbarComponent.jsx
+│   │   ├── Hero.jsx
+│   │   ├── VehiculoCard.jsx
+│   │   └── FormularioVehiculo.jsx
+│   ├── pages/               # Páginas principales
+│   │   ├── HomePage.jsx
+│   │   ├── CatalogoPage.jsx
+│   │   ├── DetalleVehiculoPage.jsx
+│   │   └── PosiblesComprasPage.jsx
+│   ├── data/                # Datos en JSON
+│   │   └── vehiculos.json
+│   ├── App.jsx              # Componente principal
+│   ├── AppRoutes.jsx        # Configuración de rutas
+│   ├── main.jsx             # Punto de entrada
+│   └── index.css            # Estilos globales
+├── public/                  # Archivos estáticos
+├── package.json
+├── tailwind.config.js       # Configuración de Tailwind
+├── postcss.config.js        # Configuración de PostCSS
+└── vite.config.js           # Configuración de Vite
+```
+
+## 🎯 Funcionalidades Principales
+
+### 1. Catálogo con Filtros
+- Filtro por búsqueda (marca/modelo)
+- Filtro por marca
+- Filtro por tipo de vehículo
+- Filtro por precio máximo
+- Filtro por año mínimo
+- Botón para limpiar todos los filtros
+
+### 2. Gestión de Vehículos
+- Agregar nuevos vehículos mediante formulario modal
+- Ver detalles completos de cada vehículo
+- Marcar/desmarcar vehículos como posible compra
+
+### 3. Sistema de Posibles Compras
+- Los vehículos marcados desaparecen del catálogo general
+- Página dedicada para ver todos los vehículos marcados
+- Cálculo automático del valor total
+- Posibilidad de quitar vehículos de la lista
+
+## 🎨 Diseño
+
+- **Framework CSS:** Tailwind CSS
+- **Diseño:** Responsive (mobile-first)
+- **Colores:** Paleta azul personalizada
+- **Animaciones:** Hover effects y transiciones suaves
+
+## 📝 Scripts Disponibles
+```bash
+npm run dev          # Iniciar servidor de desarrollo
+npm run build        # Crear build de producción
+npm run preview      # Previsualizar build de producción
+npm run lint         # Ejecutar linter
+```
+
+## 🔗 Enlaces
+
+- **Repositorio:** https://github.com/LeaGuty/nocarocar
+- **Desarrollado por:** Luis Gutiérrez
+
+## 📄 Licencia
+
+Este proyecto fue desarrollado como parte de un ejercicio académico.
+
+---
+
+**Desarrollado con ❤️ y React**
