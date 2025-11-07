@@ -3,7 +3,7 @@
 Aplicación web desarrollada con React y Vite para la gestión de un inventario de vehículos.
 
 ## 👨‍💻 Autor
-**Luis Gutiérrez**
+**Leandro Gutiérrez**
 
 ## 🚀 Características
 
