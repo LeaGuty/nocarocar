@@ -67,6 +67,33 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      {/* Sección de video */}
+      <div className="bg-gray-100 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
+            Conoce más sobre nosotros
+          </h2>
+          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            Descubre nuestra historia, nuestros valores y cómo podemos ayudarte a encontrar el vehículo perfecto
+          </p>
+
+          {/* Contenedor responsive para el video */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative" style={{ paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+                src="https://www.youtube.com/embed/w3dcfr76s6E?si=Sswi0nFklm0al-2l&amp;controls=0"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
