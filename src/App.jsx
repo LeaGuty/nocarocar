@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { HashRouter } from 'react-router-dom';
 import NavbarComponent from './components/NavbarComponent';
 import FormularioVehiculo from './components/FormularioVehiculo';
+import Footer from './components/Footer';
 import AppRoutes from './AppRoutes';
 import vehiculosIniciales from './data/vehiculos.json';
 import './App.css';
@@ -65,25 +66,33 @@ function App() {
 
   return (
     <HashRouter>
-      {/* Navbar fijo en todas las páginas */}
-      <NavbarComponent posiblesComprasCount={posiblesCompras.length} />
+      <div className="flex flex-col min-h-screen">
+        {/* Navbar fijo en todas las páginas */}
+        <NavbarComponent posiblesComprasCount={posiblesCompras.length} />
 
-      {/* Modal del formulario (se muestra cuando mostrarFormulario es true) */}
-      {mostrarFormulario && (
-        <FormularioVehiculo
-          onAgregarVehiculo={handleAgregarVehiculo}
-          onCerrar={() => setMostrarFormulario(false)}
-        />
-      )}
+        {/* Modal del formulario (se muestra cuando mostrarFormulario es true) */}
+        {mostrarFormulario && (
+          <FormularioVehiculo
+            onAgregarVehiculo={handleAgregarVehiculo}
+            onCerrar={() => setMostrarFormulario(false)}
+          />
+        )}
 
-      {/* Todas las rutas están en AppRoutes */}
-      <AppRoutes
-        vehiculosDisponibles={vehiculosDisponibles}
-        todosVehiculos={vehiculos}
-        posiblesCompras={posiblesCompras}
-        onTogglePosibleCompra={handleTogglePosibleCompra}
-        onToggleFormulario={() => setMostrarFormulario(true)}
-      />
+        {/* Contenido principal - flex-grow para que ocupe el espacio disponible */}
+        <main className="flex-grow">
+          {/* Todas las rutas están en AppRoutes */}
+          <AppRoutes
+            vehiculosDisponibles={vehiculosDisponibles}
+            todosVehiculos={vehiculos}
+            posiblesCompras={posiblesCompras}
+            onTogglePosibleCompra={handleTogglePosibleCompra}
+            onToggleFormulario={() => setMostrarFormulario(true)}
+          />
+        </main>
+
+        {/* Footer en todas las páginas */}
+        <Footer />
+      </div>
     </HashRouter>
   );
 }
