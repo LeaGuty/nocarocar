@@ -141,14 +141,14 @@ const FormularioVehiculo = ({ onAgregarVehiculo, onCerrar }) => {
             {/* Precio */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Precio (USD) <span className="text-red-500">*</span>
+                Precio (CLP) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
                 name="precio"
                 value={formData.precio}
                 onChange={handleChange}
-                placeholder="Ej: 25000"
+                placeholder="Ej: 23750000"
                 min="0"
                 className="input-field"
                 required
