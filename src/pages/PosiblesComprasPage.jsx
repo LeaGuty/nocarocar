@@ -4,7 +4,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import VehiculoCard from '../components/VehiculoCard';
-
+import { Container, Card, Input, Button, Grid, Badge } from '../components/ui'; 
+import { Link } from 'react-router-dom';
 /**
  * Página que lista todos los vehículos que el usuario marcó como posible compra.
  * Permite desmarcarlos para que vuelvan al inventario general.
@@ -111,18 +112,15 @@ const PosiblesComprasPage = ({ vehiculos, posiblesCompras, onTogglePosibleCompra
 
                     {/* Botones de acción */}
                     <div className="flex space-x-4">
-                      <button
-                        onClick={() => navigate(`/vehiculo/${vehiculo.id}`)}
-                        className="btn-primary flex-1"
-                      >
-                        Ver Detalles
-                      </button>
-                      <button
-                        onClick={() => onTogglePosibleCompra(vehiculo.id)}
-                        className="btn-danger flex-1"
-                      >
-                        Quitar de la Lista
-                      </button>
+                      <Link to={`/vehiculo/${vehiculo.id}`}>
+                        <Button variant="primary" size="sm" >
+                          Ver Detalles
+                        </Button>
+                      </Link>
+                      <Button variant="danger" size="sm" onClick={() => onTogglePosibleCompra(vehiculo.id)}>
+                          Quitar de la Lista
+                        </Button>
+                      
                     </div>
                   </div>
                 </div>

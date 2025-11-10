@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import VehiculoCard from '../components/VehiculoCard';
+import { Container, Card, Input, Button, Grid, Badge } from '../components/ui';
 
 /**
  * Página del catálogo que muestra todos los vehículos disponibles.
@@ -60,124 +61,83 @@ const CatalogoPage = ({ vehiculos, posiblesCompras, onAgregarVehiculo, onToggleF
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <Container maxWidth="2xl" padding="lg" className="py-8">
       {/* Encabezado con título y botón para agregar vehículo */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold text-gray-900">Catálogo de Vehículos</h1>
-        <button 
-          onClick={onToggleFormulario}
-          className="btn-primary flex items-center space-x-2"
-        >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <Button variant="primary" onClick={onToggleFormulario}>
+          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd"/>
           </svg>
-          <span>Agregar Vehículo</span>
-        </button>
+          Agregar Vehículo
+        </Button>
       </div>
 
       {/* Panel de filtros */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+      <Card padding="lg" className="mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">Filtros</h2>
-          <button 
-            onClick={limpiarFiltros}
-            className="btn-secondary text-sm"
-          >
+          <Button variant="secondary" size="sm" onClick={limpiarFiltros}>
             Limpiar Filtros
-          </button>
+          </Button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <Grid cols="1" gap="md" responsive={{ sm: '1', md: '2', lg: '5' }}>
           {/* Filtro por búsqueda */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Buscar
-            </label>
-            <input
-              type="text"
-              placeholder="Marca o modelo..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="input-field"
-            />
-          </div>
+          <Input
+            label="Buscar"
+            type="text"
+            placeholder="Marca o modelo..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
 
           {/* Filtro por marca */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Marca
-            </label>
-            <select
-              value={marcaFiltro}
-              onChange={(e) => setMarcaFiltro(e.target.value)}
-              className="input-field"
-            >
-              {marcasUnicas.map((marca) => (
-                <option key={marca} value={marca}>
-                  {marca}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Input.Select
+            label="Marca"
+            value={marcaFiltro}
+            onChange={(e) => setMarcaFiltro(e.target.value)}
+            options={marcasUnicas.map(marca => ({ value: marca, label: marca }))}
+          />
 
           {/* Filtro por tipo */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tipo
-            </label>
-            <select
-              value={tipoFiltro}
-              onChange={(e) => setTipoFiltro(e.target.value)}
-              className="input-field"
-            >
-              {tiposUnicos.map((tipo) => (
-                <option key={tipo} value={tipo}>
-                  {tipo}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Input.Select
+            label="Tipo"
+            value={tipoFiltro}
+            onChange={(e) => setTipoFiltro(e.target.value)}
+            options={tiposUnicos.map(tipo => ({ value: tipo, label: tipo }))}
+          />
 
           {/* Filtro por precio máximo */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Precio Máximo
-            </label>
-            <input
-              type="number"
-              placeholder="Ej: 50000"
-              value={precioMaxFiltro}
-              onChange={(e) => setPrecioMaxFiltro(e.target.value)}
-              className="input-field"
-            />
-          </div>
+          <Input
+            label="Precio Máximo"
+            type="number"
+            placeholder="Ej: 50000000"
+            value={precioMaxFiltro}
+            onChange={(e) => setPrecioMaxFiltro(e.target.value)}
+          />
 
           {/* Filtro por año mínimo */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Año Mínimo
-            </label>
-            <input
-              type="number"
-              placeholder="Ej: 2020"
-              value={añoMinFiltro}
-              onChange={(e) => setAñoMinFiltro(e.target.value)}
-              className="input-field"
-            />
-          </div>
-        </div>
-      </div>
+          <Input
+            label="Año Mínimo"
+            type="number"
+            placeholder="Ej: 2020"
+            value={añoMinFiltro}
+            onChange={(e) => setAñoMinFiltro(e.target.value)}
+          />
+        </Grid>
+      </Card>
 
       {/* Contador de resultados */}
       <div className="mb-6">
         <p className="text-gray-600">
-          Mostrando <span className="font-bold text-primary-600">{vehiculosFiltrados.length}</span> de {vehiculos.length} vehículos
+          Mostrando <Badge variant="primary">{vehiculosFiltrados.length}</Badge> de {vehiculos.length} vehículos
         </p>
       </div>
 
       {/* Grid de vehículos */}
       {vehiculosFiltrados.length > 0 ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Grid cols="1" gap="lg" responsive={{ sm: '1', md: '2', lg: '3' }}>
           {vehiculosFiltrados.map((vehiculo) => (
             <VehiculoCard
               key={vehiculo.id}
@@ -185,9 +145,9 @@ const CatalogoPage = ({ vehiculos, posiblesCompras, onAgregarVehiculo, onToggleF
               esPosibleCompra={posiblesCompras.includes(vehiculo.id)}
             />
           ))}
-        </div>
+        </Grid>
       ) : (
-        <div className="text-center py-16">
+        <Card padding="lg" className="text-center py-16">
           <svg className="w-24 h-24 mx-auto text-gray-300 mb-4" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
           </svg>
@@ -197,12 +157,12 @@ const CatalogoPage = ({ vehiculos, posiblesCompras, onAgregarVehiculo, onToggleF
           <p className="text-gray-600 mb-4">
             Intenta ajustar los filtros o buscar con otros términos
           </p>
-          <button onClick={limpiarFiltros} className="btn-primary">
+          <Button variant="primary" onClick={limpiarFiltros}>
             Limpiar Filtros
-          </button>
-        </div>
+          </Button>
+        </Card>
       )}
-    </div>
+    </Container>
   );
 };
 

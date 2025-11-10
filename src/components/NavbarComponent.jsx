@@ -3,6 +3,9 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import autoLogo from '../assets/auto.svg';
+import NavLink from './ui/NavLink';
+import Button from './ui/Button';
 
 /**
  * Componente de navegación sticky que se mantiene fijo en la parte superior.
@@ -26,7 +29,7 @@ const NavbarComponent = ({ posiblesComprasCount }) => {
   };
 
   return (
-    <nav className="bg-primary-700 text-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-blue-700 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo y nombre de la tienda */}
@@ -35,10 +38,7 @@ const NavbarComponent = ({ posiblesComprasCount }) => {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             onClick={cerrarMenu}
           >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-              <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
-            </svg>
+            <img src={autoLogo} alt="NoCaro Car Logo" className="w-16 h-16" />
             <span className="text-2xl font-bold">NoCaro Car</span>
           </Link>
 
@@ -63,24 +63,10 @@ const NavbarComponent = ({ posiblesComprasCount }) => {
 
           {/* Enlaces de navegación - Desktop (ocultos en móvil) */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link
-              to="/"
-              className="hover:text-primary-200 transition-colors duration-200 font-medium"
-            >
-              Inicio
-            </Link>
-            <Link
-              to="/catalogo"
-              className="hover:text-primary-200 transition-colors duration-200 font-medium"
-            >
-              Catálogo
-            </Link>
-            <Link
-              to="/contacto"
-              className="hover:text-primary-200 transition-colors duration-200 font-medium"
-            >
-              Contacto
-            </Link>
+            {/* 2. Usamos el componente. ¡Mucho más limpio! */}
+            <NavLink to="/">Inicio</NavLink>
+            <NavLink to="/catalogo">Catálogo</NavLink>
+            <NavLink to="/contacto">Contacto</NavLink>
 
             {/* Botón de posibles compras con badge de contador */}
             <Link
@@ -108,27 +94,16 @@ const NavbarComponent = ({ posiblesComprasCount }) => {
           }`}
         >
           <div className="pb-4 space-y-3">
-            <Link
-              to="/"
-              onClick={cerrarMenu}
-              className="block py-2 px-4 hover:bg-primary-600 rounded transition-colors duration-200 font-medium"
-            >
+            {/* 3. Reusamos el mismo componente con la otra variante */}
+            <NavLink to="/" variant="mobile" onClick={cerrarMenu}>
               Inicio
-            </Link>
-            <Link
-              to="/catalogo"
-              onClick={cerrarMenu}
-              className="block py-2 px-4 hover:bg-primary-600 rounded transition-colors duration-200 font-medium"
-            >
+            </NavLink>
+            <NavLink to="/catalogo" variant="mobile" onClick={cerrarMenu}>
               Catálogo
-            </Link>
-            <Link
-              to="/contacto"
-              onClick={cerrarMenu}
-              className="block py-2 px-4 hover:bg-primary-600 rounded transition-colors duration-200 font-medium"
-            >
+            </NavLink>
+            <NavLink to="/contacto" variant="mobile" onClick={cerrarMenu}>
               Contacto
-            </Link>
+            </NavLink>
             <Link
               to="/posibles-compras"
               onClick={cerrarMenu}
