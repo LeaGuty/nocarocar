@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import CatalogoPage from './pages/CatalogoPage';
 import DetalleVehiculoPage from './pages/DetalleVehiculoPage';
 import PosiblesComprasPage from './pages/PosiblesComprasPage';
+import ContactoPage from './pages/ContactoPage';
 
 /**
  * Componente que define todas las rutas de la aplicación.
@@ -64,6 +65,9 @@ const AppRoutes = ({
           />
         }
       />
+
+      {/* Ruta de contacto */}
+      <Route path="/contacto" element={<ContactoPage />} />
     </Routes>
   );
 };

@@ -2,7 +2,7 @@
 // Componente principal de la aplicación
 
 import { useState, useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import NavbarComponent from './components/NavbarComponent';
 import FormularioVehiculo from './components/FormularioVehiculo';
 import AppRoutes from './AppRoutes';
@@ -64,7 +64,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {/* Navbar fijo en todas las páginas */}
       <NavbarComponent posiblesComprasCount={posiblesCompras.length} />
 
@@ -84,7 +84,7 @@ function App() {
         onTogglePosibleCompra={handleTogglePosibleCompra}
         onToggleFormulario={() => setMostrarFormulario(true)}
       />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
